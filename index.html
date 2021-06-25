@@ -1,0 +1,53 @@
+<!-- CODE EXPLAINED CHANNEL -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta content="width=device-width,initial-scale=1,user-scalable=no,maximum-scale=1" name="viewport"/>
+    <title>JavaScript - To Do List</title>
+    <link rel="stylesheet" href="css/todo.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="clear">
+                <div class="refresh"></div>
+            </div>
+            <div class="sorter">
+                <div id="sortIcon" class="sort-down"></div>
+            </div>
+            <div id="date"></div>
+        </div>
+        <div class="content">
+            
+            <ul id="list"></ul>
+        </div>
+        <div class="add-to-do">
+            <input type="text" id="input-text" placeholder="Write Down Something To Do!" autofocus>
+            <div class="do-priority">
+                <br/>
+                Choose The Event Priority:
+               <select id="priority" class="priority" onchange="selectcolor(this)"> 
+                   <option value="A"  selected>Important and Urgent</OPTION>
+                   <option value="B" >Not Important but Urgent</OPTION>
+                   <option value="C" >Not Urgent but Important</OPTION>
+                   <option value="D" >Not Urgent and Not Important</OPTION>
+               </select>
+               </div>
+            <div id="plus" class="plus"></div>
+        </div>
+        
+        <footer class="footer">
+        
+        <span class="todo-count" ></span>
+
+
+        <ul class="filters">
+            <li><a class="selected" style="cursor:pointer;">All</a></li>
+            <li><a class="" style="cursor:pointer;">Active</a></li>
+            <li><a class="" style="cursor:pointer;">Completed</a></li>
+        </ul>
+
+        </footer>
+    <script src="js/todo.js"></script>
+</body>
+</html>
