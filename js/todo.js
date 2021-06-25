@@ -93,6 +93,7 @@ var filters = $All('.filters li a');
         });
       })(filters[i])
     }
+    
 
     function update() {
         var items=$All(".content li")
@@ -120,6 +121,48 @@ var filters = $All('.filters li a');
         var count = $('.todo-count');
         count.innerHTML = (leftNum || 'No') + (leftNum > 1 ? ' items' : ' item') + ' left';
       }
+
+
+      function completeAll(){
+        var items=$All(".content li");
+        if(items.length>0){
+            for (i = 0; i < items.length; ++i) {
+                item = items[i];
+                if (!item.firstElementChild.classList.contains(CHECK)) {
+                    item.firstElementChild.classList.toggle(CHECK);
+                    item.firstElementChild.classList.toggle(UNCHECK);
+                    item.querySelector(".text").classList.toggle(LINE_THROUGH);
+                }
+            }    
+            update();
+        }
+
+    }
+
+    function resetAll(){
+        var items=$All(".content li");
+        if(items.length>0){
+            for (i = 0; i < items.length; ++i) {
+                item = items[i];
+                if (item.firstElementChild.classList.contains(CHECK)) {
+                    item.firstElementChild.classList.toggle(CHECK);
+                    item.firstElementChild.classList.toggle(UNCHECK);
+                    item.querySelector(".text").classList.toggle(LINE_THROUGH);
+                }
+            }    
+            update();
+        }
+    }
+
+    function removeAll(){
+        var items=$All(".content li");
+        if(items.length>0){
+            for (i = 0; i < items.length; ++i) {
+                item = items[i].firstElementChild;
+                removeToDo(item);
+            }    
+        }
+    }
 // Show todays date
 const options = {weekday : "long", month:"short", day:"numeric"};
 const today = new Date();
@@ -208,7 +251,6 @@ function addedit(){
 
     function edit(event) {
       const element=event.target;
-      console.log(element);
       tar=element.parentNode;
       element.parentNode.classList.add(CL_EDITING);
       var edit = document.createElement('input');

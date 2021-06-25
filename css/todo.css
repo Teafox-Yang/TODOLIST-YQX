@@ -64,6 +64,16 @@ body{
     background-image: url('../img/down.png');
 }
 
+#resetAll{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+#completeAll{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+#removeAll{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
 .sorter:hover{
     cursor: pointer;;
 }
