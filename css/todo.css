@@ -90,7 +90,7 @@ body{
 
 .content{
     width:380px;
-    height: 360px;
+    height: 300px;
     max-height:350px;
     background-color: #FFF;
     overflow: auto;
@@ -141,7 +141,7 @@ body{
 
 .content li.editing .edit {
     display: block;
-    width: 506px;
+    width: 345px;
     padding: 13px 17px 12px 17px;
     font-size: 20px;
     font-family: Georgia, 'Times New Roman', Times, serif;

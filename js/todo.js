@@ -25,6 +25,7 @@ const UNCHECK = "uncheck";
 const LINE_THROUGH = "lineThrough";
 const CL_SELECTED = 'selected';
 
+
 // Variables
 let LIST, id;
 
@@ -152,7 +153,31 @@ function addToDo(toDo, id, done, trash,color="0"){
     update();
     addedit();
 }
+// 移动端双击事件
+var clickid = 1;
+var timer = null;
 
+$('div').click(function() {
+    if(clickid == 1) {
+        startTime = new Date().getTime();
+        clickid++;
+        timer = setTimeout(function () {
+            a(); // 单击事件触发
+            clickid = 1;
+        }, 300)
+    }
+
+    if(clickid == 2) {
+        clickid ++ ;
+    } else {
+        var endTime = new Date().getTime();
+        if ((endTime - startTime) < 300) {
+            b(); // 双击事件
+            clickid = 1;
+            clearTimeout(timer);
+        }
+    }
+})
 //add edit module
 function addedit(){
     var items=$All(".content li")
@@ -161,7 +186,27 @@ function addedit(){
     console.log(item)
     var label = item.querySelector('.text');
     console.log(label)
-    label.addEventListener('dblclick', function(event) {
+    label.addEventListener('click', function(event) {
+        if(clickid == 1) {
+            startTime = new Date().getTime();
+            clickid++;
+            timer = setTimeout(function () {
+                clickid = 1;
+            }, 300)
+        }
+        if(clickid == 2) {
+            clickid ++ ;
+        } else {
+            var endTime = new Date().getTime();
+            if ((endTime - startTime) < 300) {
+                edit(event); // 双击事件
+                clickid = 1;
+                clearTimeout(timer);
+            }
+        }
+    })
+
+    function edit(event) {
       const element=event.target;
       console.log(element);
       tar=element.parentNode;
@@ -204,7 +249,7 @@ function addedit(){
   
       tar.appendChild(edit);
       edit.focus();
-    }, false);
+    }
     
 }
 
